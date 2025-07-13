@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>LinuxMint中使用中文输入法</title>
+<meta name="keywords" content="LinuxMint中使用中文输入法, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="LinuxMint 22.1自带Fcitx5和Ibus输入法，我们使用Fcitx5
+安装并使用Fcitx5先下载fcitx-rime
+1sudo apt install fcitx-rime
+
+安装成功后打开LinuxMint的Input ">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="LinuxMint中使用中文输入法">
+<meta property="og:description" content="LinuxMint 22.1自带Fcitx5和Ibus输入法，我们使用Fcitx5
+安装并使用Fcitx5先下载fcitx-rime
+1sudo apt install fcitx-rime
+
+安装成功后打开LinuxMint的Input ">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">LinuxMint中使用中文输入法</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-13</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Linux/">
+              Linux
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Application/">
+              Application
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>LinuxMint 22.1自带Fcitx5和Ibus输入法，我们使用Fcitx5</p>
+<h2 id="安装并使用Fcitx5"><a href="#安装并使用Fcitx5" class="headerlink" title="安装并使用Fcitx5"></a>安装并使用Fcitx5</h2><p>先下载fcitx-rime</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install fcitx-rime</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后打开LinuxMint的Input method应用，下载<strong>Simplified Chinese</strong>语言支持库</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713145752085.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713145752085.png"  alt="image.png" lazyload></a></p>
+<p>注销后重新登录（重启也可以），右键Panel中Fcitx输入法图标，点击<code>Configure</code>选项进入配置页面，在<code>Available Input Method</code>列表中选择<code>Rime</code>输入法并添加到<code>Current Input Method</code>中，点击<code>Apply</code>应用，然后重启输入法。</p>
+<p>重启后<code>Ctrl+Space</code>可以直接切换到Fcitx-rime输入法</p>
+<h2 id="设置默认简体中文"><a href="#设置默认简体中文" class="headerlink" title="设置默认简体中文"></a>设置默认简体中文</h2><p>此时你会发现Fcitx-rime默认中文是繁体，每次重启都需要手动切换为简体，那我们应该修改默认中文呢？</p>
+<p>先进入到当前用户的Fcitx-rime配置目录中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.local/share/fcitx5/rime/build</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">total 5.5M</span><br><span class="line">-rw------- 1 ruriai ruriai 352K Jul 13 10:37 bopomofo.prism.bin</span><br><span class="line">-rw------- 1 ruriai ruriai 8.2K Jul 13 10:37 bopomofo.schema.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai 136K Jul 13 10:37 bopomofo_tw.prism.bin</span><br><span class="line">-rw------- 1 ruriai ruriai 8.1K Jul 13 10:37 bopomofo_tw.schema.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai 2.2M Jul 13 10:37 cangjie5.prism.bin</span><br><span class="line">-rw------- 1 ruriai ruriai  41K Jul 13 10:37 cangjie5.schema.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai 4.8K Jul 13 10:37 default.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai  133 Jul 13 10:37 fcitx5.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai  41K Jul 13 10:37 luna_pinyin_fluency.schema.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai  31K Jul 13 11:20 luna_pinyin.prism.bin</span><br><span class="line">-rw------- 1 ruriai ruriai  41K Jul 13 10:37 luna_pinyin.schema.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai  31K Jul 13 10:37 luna_pinyin_simp.prism.bin</span><br><span class="line">-rw------- 1 ruriai ruriai  41K Jul 13 10:37 luna_pinyin_simp.schema.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai  17K Jul 13 10:37 luna_quanpin.prism.bin</span><br><span class="line">-rw------- 1 ruriai ruriai  41K Jul 13 10:37 luna_quanpin.schema.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai 2.3M Jul 13 10:37 stroke.prism.bin</span><br><span class="line">-rw------- 1 ruriai ruriai 6.3K Jul 13 10:37 stroke.schema.yaml</span><br><span class="line">-rw------- 1 ruriai ruriai 206K Jul 13 10:37 terra_pinyin.prism.bin</span><br><span class="line">-rw------- 1 ruriai ruriai 8.5K Jul 13 10:37 terra_pinyin.schema.yaml</span><br></pre></td></tr></table></figure>
+
+<p>修改其中的<code>luna_pinyin.schema.yaml</code>文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim luna_pinyin.schema.yaml</span><br></pre></td></tr></table></figure>
+
+<p>vim命令模式下搜索默认切换选项<code>/switches</code>，找到下面这段内容</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">switches:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ascii_mode</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">states:</span> [<span class="string">&quot;中文&quot;</span>, <span class="string">&quot;西文&quot;</span>]</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">full_shape</span></span><br><span class="line">    <span class="attr">states:</span> [<span class="string">&quot;半角&quot;</span>, <span class="string">&quot;全角&quot;</span>]</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">zh_simp</span></span><br><span class="line">    <span class="attr">states:</span> [<span class="string">&quot;漢字&quot;</span>, <span class="string">&quot;汉字&quot;</span>]</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ascii_punct</span></span><br><span class="line">    <span class="attr">states:</span> [<span class="string">&quot;。，&quot;</span>, <span class="string">&quot;．，&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>修改为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">switches:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ascii_mode</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">states:</span> [<span class="string">&quot;中文&quot;</span>, <span class="string">&quot;西文&quot;</span>]</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">full_shape</span></span><br><span class="line">    <span class="attr">states:</span> [<span class="string">&quot;半角&quot;</span>, <span class="string">&quot;全角&quot;</span>]</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">zh_simp</span></span><br><span class="line">    <span class="attr">reset:</span> <span class="number">1</span></span><br><span class="line">    <span class="attr">states:</span> [<span class="string">&quot;漢字&quot;</span>, <span class="string">&quot;汉字&quot;</span>]</span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">ascii_punct</span></span><br><span class="line">    <span class="attr">states:</span> [<span class="string">&quot;。，&quot;</span>, <span class="string">&quot;．，&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>也就是在<code>states: [&quot;漢字&quot;, &quot;汉字&quot;]</code>上方添加一行<code>reset: 1</code></p>
+<p>然后<code>:wq</code>保存退出，重启输入法，此时默认简体中文</p>
+<h2 id="添加字体"><a href="#添加字体" class="headerlink" title="添加字体"></a>添加字体</h2><p>下载fontconfig工具</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install -y fontconfig</span><br></pre></td></tr></table></figure>
+
+<p>查看已安装中文字体</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-list :lang=zh</span><br></pre></td></tr></table></figure>
+
+<p>从这两个字体库下载你需要的字体，都没有的话自行Google</p>
+<ul>
+<li>Nerd Font Officual GitHub: <a target="_blank" rel="noopener" href="https://github.com/ryanoasis/nerd-fonts">GitHub - ryanoasis&#x2F;nerd-fonts: Iconic font aggregator, collection, &amp; patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, &amp; more</a></li>
+<li>Google Font: <a target="_blank" rel="noopener" href="https://fonts.google.com/">Title Unavailable | Site Unreachable</a></li>
+</ul>
+<p>下载字体后将其转移到对应目录，一般移动到全局字体存储目录即可</p>
+<ul>
+<li>全局字体存储目录：<code>/usr/share/fonts</code></li>
+<li>用户字体存储目录：<code>~/.local/share/fonts/</code></li>
+</ul>
+<p>将当前目录下所有<code>.ttf</code>文件移动到全局字体目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> <span class="built_in">mv</span> *.ttf /usr/share/fonts</span><br></pre></td></tr></table></figure>
+
+<p>全局更新字体缓存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-cache -fv</span><br></pre></td></tr></table></figure>
+
+<p>用户更新字体缓存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-cache -fv ~/.local/share/fonts</span><br></pre></td></tr></table></figure>
+
+<p>使用以下指令验证字体是否成功安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fc-list | grep <span class="string">&#x27;font-name&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>LinuxMint中的<strong>Font Selection</strong>应用用于自定义字体，全局字体推荐</p>
+<ul>
+<li><code>Noto Sans CJK SC Regular</code></li>
+</ul>
+<h2 id="添加颜色主题"><a href="#添加颜色主题" class="headerlink" title="添加颜色主题"></a>添加颜色主题</h2><blockquote>
+<p>Fcitx5-Material-Color在LinuxMint存在显示问题，暂时未解决</p>
+</blockquote>
+<p>可用性解决了，现在为Fcitx添加皮肤，即<strong>Fcitx5-Material-Color</strong>主题</p>
+<ul>
+<li>Official GitHub: <a target="_blank" rel="noopener" href="https://github.com/hosxy/Fcitx5-Material-Color">github.com&#x2F;hosxy&#x2F;Fcitx5-Material-Color</a></li>
+</ul>
+<p>LinuxMint中使用apt安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install fcitx5-material-color</span><br></pre></td></tr></table></figure>
+
+<p>安装后修改配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/fcitx5/conf/classicui.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 垂直候选列表</span><br><span class="line">Vertical Candidate List=False</span><br><span class="line"></span><br><span class="line"># 按屏幕 DPI 使用</span><br><span class="line">PerScreenDPI=True</span><br><span class="line"></span><br><span class="line"># Font (设置成你喜欢的字体)</span><br><span class="line">Font=&quot;思源黑体 CN Medium 13&quot;</span><br><span class="line"></span><br><span class="line"># 主题</span><br><span class="line">Theme=Material-Color-Teal</span><br></pre></td></tr></table></figure>
+
+<p>有多种主题可选，推荐看官方GitHub教程，我推荐<code>Material-Color-Teal</code>，墨绿色很符合LinuxMint</p>
+<p>如果要使用单行模式</p>
+<ul>
+<li>对于 fcitx5 自带的 pinyin，请修改 <code>~/.config/fcitx5/conf/pinyin.conf</code></li>
+<li>对于 fcitx5-rime，请新建&#x2F;修改 <code>~/.config/fcitx5/conf/rime.conf</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.config/fcitx5/conf/rime.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 可用时在应用程序中显示预编辑文本</span><br><span class="line">PreeditInApplication=True</span><br></pre></td></tr></table></figure>
+
+<p>然后打开Fcitx Configuration窗口，将Fcitx主题修改为Material-Color</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713161522854.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713161522854.png"  alt="image.png" lazyload></a></p>
+<p>重启输入法，搞定。可以看出颜值相当不错，贴近Windows自带的输入法</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713161734582.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713161734582.png"  alt="image.png" lazyload></a></p>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E5%AE%89%E8%A3%85%E5%B9%B6%E4%BD%BF%E7%94%A8Fcitx5"><span class="top-box-text">安装并使用Fcitx5</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87"><span class="top-box-text">设置默认简体中文</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E6%B7%BB%E5%8A%A0%E5%AD%97%E4%BD%93"><span class="top-box-text">添加字体</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E6%B7%BB%E5%8A%A0%E9%A2%9C%E8%89%B2%E4%B8%BB%E9%A2%98"><span class="top-box-text">添加颜色主题</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/07/13/2507/05-hexo-blog-host-to-vercel/">
+          <h3 class="post-title">
+            下一篇：Hexo博客部署到Vercel
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+
