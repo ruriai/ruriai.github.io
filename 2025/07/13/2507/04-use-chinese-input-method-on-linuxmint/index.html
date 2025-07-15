@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>Obsidian+PicGo in LinuxMint</title>
+<meta name="keywords" content="Obsidian+PicGo in LinuxMint, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="安装Obsidian，基本支持全平台，建议从官网下载，也可以从Linux Mint的Software Manager中下载
+
+Obsidian Official: Download - Obsidian
+
+安装PicGo，推荐使用Appim">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Obsidian+PicGo in LinuxMint">
+<meta property="og:description" content="安装Obsidian，基本支持全平台，建议从官网下载，也可以从Linux Mint的Software Manager中下载
+
+Obsidian Official: Download - Obsidian
+
+安装PicGo，推荐使用Appim">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">Obsidian+PicGo in LinuxMint</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-13</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Linux/">
+              Linux
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Application/">
+              Application
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>安装Obsidian，基本支持全平台，建议从官网下载，也可以从Linux Mint的Software Manager中下载</p>
+<ul>
+<li>Obsidian Official: <a target="_blank" rel="noopener" href="https://obsidian.md/download">Download - Obsidian</a></li>
+</ul>
+<p>安装PicGo，推荐使用Appimage版本，官方的snap版本在结合Obsidian的<strong>Image Auto Upload</strong>插件使用时会出现缺少<code>xclip</code>组件的问题</p>
+<ul>
+<li>PicGo GitHub Release: <a target="_blank" rel="noopener" href="https://github.com/molunerfinn/picgo/releases">github.com&#x2F;molunerfinn&#x2F;picgo&#x2F;releases</a></li>
+</ul>
+<p>我的习惯是将<code>.appimage</code>文件移动到<code>/opt/xxx</code>目录下，最终路径为<code>/opt/picgo/PicGo-2.4.0-beta.10.AppImage</code></p>
+<p>下载PicGo的Icon图标，方便使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> wget -O /opt/picgo/picgo.png <span class="string">&quot;https://www.google.com.hk/url?sa=i&amp;url=https%3A%2F%2Fpicgo.github.io%2FPicGo-Doc%2Fen%2F&amp;psig=AOvVaw222mtZCY1i-Z4FyYpjgA9U&amp;ust=1752471204543000&amp;source=images&amp;cd=vfe&amp;opi=89978449&amp;ved=0CBEQjRxqFwoTCID3sJGOuY4DFQAAAAAdAAAAABAE&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>创建<code>.desktop</code>文件，方便全局菜单中直接选中使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /usr/share/applications/picgo.desktop</span><br></pre></td></tr></table></figure>
+
+<p><code>.desktop</code>文件内容模板如下，可根据个人习惯更改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Name=PicGo</span><br><span class="line">Exec=/opt/picgo/PicGo-2.4.0-beta.10.AppImage %U</span><br><span class="line">Terminal=false</span><br><span class="line">Type=Application</span><br><span class="line">Icon=/opt/picgo/picgo.png</span><br><span class="line">Comment=Tool for quickly uploading images and obtaining image URL links.</span><br><span class="line">Categories=Utility;</span><br></pre></td></tr></table></figure>
+
+<p>之前我是使用阿里云OSS，此次尝试使用腾讯云COS</p>
+<p>开通COS对象存储服务，创建存储桶，进入存储桶的概览页面，获取<code>Bucket名称</code>、<code>存储区域</code>两个字段</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713134842815.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713134842815.png"  alt="image.png" lazyload></a></p>
+<p><code>帐号 -&gt; 访问管理 -&gt; 访问密钥 -&gt; API密钥管理</code>，新建密钥，记住<code>SecretId</code>、<code>SecretKey</code>和<code>AppId</code></p>
+<blockquote>
+<p>出于安全考虑，你可以先创建用于COS服务的子用户，然后创建子用户密钥</p>
+</blockquote>
+<p>有了以上五个字段，打开PicGo进入腾讯云COS设置，填入这五个字段，如果你对存储桶的内容有规划，自行设定存储路径</p>
+<p>打开Obsidian，下载并开启<code>Image Auto Upload</code>插件，复制粘贴图片到文档中，成功</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713135527577.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713135527577.png"  alt="image.png" lazyload></a></p>
+<p>该插件默认使用 <strong>PicGo(app)</strong> 本地Server，PicGo的本地Server默认开启，所以先配置Picgo，配置后下载插件直接就能使用</p>
+
+        </div>
+          
+        <div class="top-div">
+          
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/07/12/2507/03-github-page-domain-host-to-cloudflare/">
+          <h3 class="post-title">
+            下一篇：GitHub Pages域名托管到Cloudflare
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+

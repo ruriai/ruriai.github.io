@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>为WSL2设置代理</title>
+<meta name="keywords" content="为WSL2设置代理, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="适用于Linux的Windows子系统（WSL）是Windows的一项功能，可用于在Windows计算机上运行Linux环境，而无需单独的虚拟机或双重启动。 WSL旨在为想要同时使用Windows和Linux的开发人员提供无缝高效的体验
+如">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="为WSL2设置代理">
+<meta property="og:description" content="适用于Linux的Windows子系统（WSL）是Windows的一项功能，可用于在Windows计算机上运行Linux环境，而无需单独的虚拟机或双重启动。 WSL旨在为想要同时使用Windows和Linux的开发人员提供无缝高效的体验
+如">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">为WSL2设置代理</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-15</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/WSL2/">
+              WSL2
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Proxy/">
+              Proxy
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>适用于Linux的Windows子系统（WSL）是Windows的一项功能，可用于在Windows计算机上运行Linux环境，而无需单独的虚拟机或双重启动。 WSL旨在为想要同时使用Windows和Linux的开发人员提供无缝高效的体验</p>
+<p>如图所示，我在WSL2中安装的是Fedora42子系统</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250715211506068.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250715211506068.png"  alt="image.png" lazyload></a></p>
+<h2 id="获取windows宿主机ip"><a href="#获取windows宿主机ip" class="headerlink" title="获取windows宿主机ip"></a>获取windows宿主机ip</h2><p>WSL2相比WSL1来说可以完美支持Docker。与WSL1的模拟Linux API不同的是，WSL2采用在Hyper-V虚拟机中运行的方案。可以说WSL2和原汁原味的Linux已经十分接近</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/FLY_DREAM/p/16024280.html">最详尽教程完整介绍-Windows 的 Linux 子系统-WSL1&amp;WSL2 - DevOps在路上 - 博客园</a></li>
+</ul>
+<p>在WSL1时代，由于Linux子系统和Windows共享了网络端口，所以访问Windows的代理非常简单。但是WSL2基于Hyper-V运行，导致Linux子系统和Windows在网络上是两台各自独立的机器，从Linux子系统访问Windows首先需要找到Windows的IP。</p>
+<p>由于Linux子系统也是通过Windows访问网络，所以Linux子系统中的网关指向的是Windows，DNS服务器指向的也是Windows，基于这两个特性，我们可以将Windows的IP读取出来。</p>
+<p>网上你会看到一些老教程，让你读取<code>/etc/resolv.conf</code>文件获取windows ip，这是因为在老版本的windows系统中，宿主机ip会在启动子系统时被写入该文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+
+<p>但从windows11版本22H2开始，WSL默认使用新的DNS隧道功能来处理请求，这一变化，导致 <code>/etc/resolv.conf</code> 中不再是准确的宿主机IP，而是如 <code>10.255.255.254</code></p>
+<blockquote>
+<p>在运行 Windows 11 22H2 及更高版本的计算机上，在 <a href="https://link.juejin.cn/?target=https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config%23configuration-settings-for-wslconfig" title="https:&#x2F;&#x2F;learn.microsoft.com&#x2F;zh-cn&#x2F;windows&#x2F;wsl&#x2F;wsl-config#configuration-settings-for-wslconfig"><code>.wslconfig</code> 文件中的 <code>[wsl2]</code> 下设置 <code>dnsTunneling=true</code></a> 可使 WSL 使用虚拟化功能来应答来自 WSL 内的 DNS 请求，而不是通过网络数据包请求它们。 此功能旨在提高与 VPN 和其他复杂网络设置的兼容性。</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/networking">使用 WSL 访问网络应用程序 | Microsoft Learn</a></li>
+</ul>
+<p>官方文档给出了新的获取windows宿主机ip的方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route show | grep -i default | awk <span class="string">&#x27;&#123; print $3&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>我获取到的windows宿主机ip是<code>172.26.0.1</code></p>
+<h2 id="使用proxychains走代理"><a href="#使用proxychains走代理" class="headerlink" title="使用proxychains走代理"></a>使用proxychains走代理</h2><p>先开启windows代理工具的<code>Allow Lan</code>模块，也就是允许局域网连接</p>
+<p>WSL2中直接设置全局环境变量走代理不够灵活，推荐使用proxychains代理工具</p>
+<p>proxychins是代理服务工具，可以在命令行中使用它代理各种命令，支持的协议有：<code>http/https/socks4/socks5</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install proxychains</span><br></pre></td></tr></table></figure>
+
+<p>使用前先修改proxychains配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/proxychains.conf </span><br></pre></td></tr></table></figure>
+
+<p>文件底部有默认的<code>socks3 127.0.0.1 9050</code>配置，根据代理软件的设置进行修改，我的是<strong>Clash Verge</strong>，默认socks5代理端口为<code>1080</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ProxyList]  </span><br><span class="line">socks5 127.0.0.1 1080</span><br></pre></td></tr></table></figure>
+
+<p>配置好之后使用proxychain就能走代理， 命令格式为<code>proxychains4 command options</code>，比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">proxychains curl www.google.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="另一种查询windows宿主机的方式"><a href="#另一种查询windows宿主机的方式" class="headerlink" title="另一种查询windows宿主机的方式"></a>另一种查询windows宿主机的方式</h3><p>获取windows宿主机ip除了使用官方提供的指令，还有另一种方法</p>
+<p>就是先关闭 dnsTunneling，然后在 <code>.wslconfig</code> 文件中的 <code>[wsl2]</code> 下设置 <code>dnsTunneling=false</code>，关闭后可继续使用老版本获取方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/resolv.conf</span><br></pre></td></tr></table></figure>
+
+<p>但这种方法有点麻烦，况且我们有更好更快的方法 :D</p>
+<h3 id="更快捷的实现WSL走代理的方式"><a href="#更快捷的实现WSL走代理的方式" class="headerlink" title="更快捷的实现WSL走代理的方式"></a>更快捷的实现WSL走代理的方式</h3><p>Clash Verge开启虚拟网卡模式即可，也就是所谓的TUN模式 :P</p>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E8%8E%B7%E5%8F%96windows%E5%AE%BF%E4%B8%BB%E6%9C%BAip"><span class="top-box-text">获取windows宿主机ip</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%BD%BF%E7%94%A8proxychains%E8%B5%B0%E4%BB%A3%E7%90%86"><span class="top-box-text">使用proxychains走代理</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E8%A1%A5%E5%85%85"><span class="top-box-text">补充</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%8F%A6%E4%B8%80%E7%A7%8D%E6%9F%A5%E8%AF%A2windows%E5%AE%BF%E4%B8%BB%E6%9C%BA%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="top-box-text">另一种查询windows宿主机的方式</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E6%9B%B4%E5%BF%AB%E6%8D%B7%E7%9A%84%E5%AE%9E%E7%8E%B0WSL%E8%B5%B0%E4%BB%A3%E7%90%86%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="top-box-text">更快捷的实现WSL走代理的方式</span></a></li></ol></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/07/13/2507/06-chinese-input-method-in-linuxmint/">
+          <h3 class="post-title">
+            下一篇：LinuxMint中使用中文输入法
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+

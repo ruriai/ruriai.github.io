@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>GitHub Pages域名托管到Cloudflare</title>
+<meta name="keywords" content="GitHub Pages域名托管到Cloudflare, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="GitHub为用户提供了USERNAME.github.io，用来做个人博客再合适不过。但.github.io着实有点……不够个性化，所以我打算将其托管到.kinoko.fun下
+
+GitHub Pages提供：https://ruriai">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="GitHub Pages域名托管到Cloudflare">
+<meta property="og:description" content="GitHub为用户提供了USERNAME.github.io，用来做个人博客再合适不过。但.github.io着实有点……不够个性化，所以我打算将其托管到.kinoko.fun下
+
+GitHub Pages提供：https://ruriai">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">GitHub Pages域名托管到Cloudflare</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-12</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/GitHub-Pages/">
+              GitHub Pages
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Cloudflare/">
+              Cloudflare
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Domain/">
+              Domain
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>GitHub为用户提供了<code>USERNAME.github.io</code>，用来做个人博客再合适不过。但<code>.github.io</code>着实有点……不够个性化，所以我打算将其托管到<code>.kinoko.fun</code>下</p>
+<ul>
+<li>GitHub Pages提供：<a target="_blank" rel="noopener" href="https://ruriai.github.io/">https://ruriai.github.io/</a></li>
+</ul>
+<p>注册Cloudflare账号，并确保已经有domain托管到此账号上</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250712175601091.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250712175601091.png"  alt="image.png" lazyload></a></p>
+<blockquote>
+<p>在国内云服务商购买的域名也可以通过修改DNS解析的形式再托管到Cloudflare，可以参考该教程：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bigorang/p/18386959">腾讯云域名托管到 cloudflare - BigOrang - 博客园</a></p>
+</blockquote>
+<p>为该域名添加 <code>CNAME</code> DNS解析</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250712180242506.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250712180242506.png"  alt="image.png" lazyload></a></p>
+<p>然后回到<code>USERNAME.github.io</code>仓库，在<code>Setting -&gt; Pages -&gt; Custom domain</code>中添加你自定义的域名，保存后稍等片刻，等提示<code>DNS check successful!</code>就可以了</p>
+<ul>
+<li>自定义域名：<a href="https://ruriai.kinoko.fun/">HammerCat - https://ruriai.kinoko.fun</a></li>
+</ul>
+
+        </div>
+          
+        <div class="top-div">
+          
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/07/12/2507/02-git-ssh-github/">
+          <h3 class="post-title">
+            下一篇：Git SSH连接到GitHub
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+

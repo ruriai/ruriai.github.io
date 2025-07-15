@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>Hexo博客部署到Vercel</title>
+<meta name="keywords" content="Hexo博客部署到Vercel, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="你或许发现，当我们为GitHub Hexo仓库设置domain后，它会自动在仓库中添加一个CNAME文件，文件内容就是我们自定义的domain。但当我们再次推送博客时，这个CNAME文件就会被移除，我们需要重新设置，这未免过于繁琐
+可以使用">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Hexo博客部署到Vercel">
+<meta property="og:description" content="你或许发现，当我们为GitHub Hexo仓库设置domain后，它会自动在仓库中添加一个CNAME文件，文件内容就是我们自定义的domain。但当我们再次推送博客时，这个CNAME文件就会被移除，我们需要重新设置，这未免过于繁琐
+可以使用">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">Hexo博客部署到Vercel</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-13</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Hexo/">
+              Hexo
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Vercel/">
+              Vercel
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>你或许发现，当我们为GitHub Hexo仓库设置domain后，它会自动在仓库中添加一个<code>CNAME</code>文件，文件内容就是我们自定义的domain。但当我们再次推送博客时，这个<code>CNAME</code>文件就会被移除，我们需要重新设置，这未免过于繁琐</p>
+<p>可以使用Vercel零成本部署我们的hexo博客项目</p>
+<p>Vercel是一个为开发者提供工具和云基础设施的平台，旨在构建、扩展和保护更快速、更个性化的网页。它特别适合前端开发，支持现代框架如Next.js、React、Vue.js等</p>
+<p>现在我们的hexo是部署在GitHub的<code>USERNAME.github.io</code>仓库中</p>
+<p>注册Vercel帐号：<a target="_blank" rel="noopener" href="https://vercel.com/">Vercel: Build and deploy the best web experiences with the AI Cloud</a></p>
+<p>注册完成后，将你的帐号与你的GitHub帐号绑定，方便后续部署</p>
+<p>进入Personal Team Manage页面，新建项目，请求GitHub授权，授权后你就可以直接导入Hexo项目（或者说仓库）</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713142326366.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713142326366.png"  alt="image.png" lazyload></a></p>
+<p>Import项目后直接点击Deploy部署即可，稍等片刻会弹出Congrutulation页面告诉你部署成功，进入Dashboard页面，Vercel已经分配Hexo项目一个域名用于访问：<a target="_blank" rel="noopener" href="https://ruriai-github-io.vercel.app/">ruriai-github-io.vercel.app&#x2F;</a></p>
+<p>vercel域名本身支持国内访问，当然你也可以自定义域名</p>
+<p>在面板中点击<strong>Domain</strong>按钮，添加自定义域名，我自己的是<code>ruriai.kinoko.fun</code></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713142910958.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250713142910958.png"  alt="image.png" lazyload></a></p>
+<p>添加后提示你<code>Verification Needed</code>，点击<code>Learn mroe</code>下拉栏。告诉了你如何添加DNS解析记录，按照给出的信息在Cloudflare后台添加即可。你也可以直接点击<code>Configure Automatically</code>按钮，自动打开Cloudflare页面并向你申请授权，授权后就会自动删除有冲突的解析并添加新的解析</p>
+<p>平台自动检测并通过后会在自定义域名旁显示蓝色对号，表示绑定成功，此时访问自定义域名即可直达Hexo站点</p>
+<p>此时你推送hexo博客到github，会自动部署到vercel并添加CNAME解析，cloudflare本身会为你的域名添加HTTPS，实现一键部署 :D</p>
+
+        </div>
+          
+        <div class="top-div">
+          
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/07/13/2507/04-use-chinese-input-method-on-linuxmint/">
+          <h3 class="post-title">
+            下一篇：Obsidian+PicGo in LinuxMint
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+

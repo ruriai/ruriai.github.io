@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>ruriai</title>
+<meta name="keywords" content="ruriai, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="ruriai's quick notes, light blog.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="ruriai">
+<meta property="og:description" content="ruriai's quick notes, light blog.">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+
+    
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2025/07/15/2507/07-minikube-and-basic-cloud-native/">
+        <h2 class="post-title">基本的云原生及使用minikube</h2>
+      </a>
+      <a href="/2025/07/15/2507/07-minikube-and-basic-cloud-native/">
+          <div class="post-abstract">
+            
+			    什么是云原生？云原生是在云计算环境中构建、部署和管理现代应用程序的软件方法。
+
+什么是云原生？- 云原生架构简介 - AWS
+
+想学习云原生相关的东西，而我们已经掌握如何使用docker，而直接上手kubernets又未免有些难度，此时mi
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-15</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+
+                minikube
+                
+                  ，
+                
+            
+
+                Cloud
+                
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2025/07/15/2507/08-set-proxy-in-wsl2/">
+        <h2 class="post-title">为WSL2设置代理</h2>
+      </a>
+      <a href="/2025/07/15/2507/08-set-proxy-in-wsl2/">
+          <div class="post-abstract">
+            
+			    适用于Linux的Windows子系统（WSL）是Windows的一项功能，可用于在Windows计算机上运行Linux环境，而无需单独的虚拟机或双重启动。 WSL旨在为想要同时使用Windows和Linux的开发人员提供无缝高效的体验
+如
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-15</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+
+                WSL2
+                
+                  ，
+                
+            
+
+                Proxy
+                
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2025/07/13/2507/06-chinese-input-method-in-linuxmint/">
+        <h2 class="post-title">LinuxMint中使用中文输入法</h2>
+      </a>
+      <a href="/2025/07/13/2507/06-chinese-input-method-in-linuxmint/">
+          <div class="post-abstract">
+            
+			    LinuxMint 22.1自带Fcitx5和Ibus输入法，我们使用Fcitx5
+安装并使用Fcitx5先下载fcitx-rime
+1sudo apt install fcitx-rime
+
+安装成功后打开LinuxMint的Input 
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-13</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+
+                Linux
+                
+                  ，
+                
+            
+
+                Application
+                
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2025/07/13/2507/05-hexo-blog-host-to-vercel/">
+        <h2 class="post-title">Hexo博客部署到Vercel</h2>
+      </a>
+      <a href="/2025/07/13/2507/05-hexo-blog-host-to-vercel/">
+          <div class="post-abstract">
+            
+			    你或许发现，当我们为GitHub Hexo仓库设置domain后，它会自动在仓库中添加一个CNAME文件，文件内容就是我们自定义的domain。但当我们再次推送博客时，这个CNAME文件就会被移除，我们需要重新设置，这未免过于繁琐
+可以使用
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-13</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+
+                Hexo
+                
+                  ，
+                
+            
+
+                Vercel
+                
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2025/07/13/2507/04-use-chinese-input-method-on-linuxmint/">
+        <h2 class="post-title">Obsidian+PicGo in LinuxMint</h2>
+      </a>
+      <a href="/2025/07/13/2507/04-use-chinese-input-method-on-linuxmint/">
+          <div class="post-abstract">
+            
+			    安装Obsidian，基本支持全平台，建议从官网下载，也可以从Linux Mint的Software Manager中下载
+
+Obsidian Official: Download - Obsidian
+
+安装PicGo，推荐使用Appim
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-13</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+
+                Linux
+                
+                  ，
+                
+            
+
+                Application
+                
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2025/07/12/2507/03-github-page-domain-host-to-cloudflare/">
+        <h2 class="post-title">GitHub Pages域名托管到Cloudflare</h2>
+      </a>
+      <a href="/2025/07/12/2507/03-github-page-domain-host-to-cloudflare/">
+          <div class="post-abstract">
+            
+			    GitHub为用户提供了USERNAME.github.io，用来做个人博客再合适不过。但.github.io着实有点……不够个性化，所以我打算将其托管到.kinoko.fun下
+
+GitHub Pages提供：https://ruriai
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-12</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+
+                GitHub Pages
+                
+                  ，
+                
+            
+
+                Cloudflare
+                
+                  ，
+                
+            
+
+                Domain
+                
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2025/07/12/2507/02-git-ssh-github/">
+        <h2 class="post-title">Git SSH连接到GitHub</h2>
+      </a>
+      <a href="/2025/07/12/2507/02-git-ssh-github/">
+          <div class="post-abstract">
+            
+			    在本地生成RSA加密的ssh密钥对，默认位置在~/.ssh，会生成id_rsa私钥和id_rsa.pub公钥，复制公钥内容一会儿要用
+1ssh-keygen -t rsa -C &quot;YOUR_GITHUB_EMAIL&quot;
+
+
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-12</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+
+                Git
+                
+                  ，
+                
+            
+
+                SSH
+                
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+<section class="post-item">
+    <div class="content">
+      <a href="/2025/07/12/2507/01-minimalism-hexo-theme-and-docusaurus/">
+        <h2 class="post-title">基于hexo搭建博客&amp;使用minimalism主题</h2>
+      </a>
+      <a href="/2025/07/12/2507/01-minimalism-hexo-theme-and-docusaurus/">
+          <div class="post-abstract">
+            
+			    搭建博客&amp;使用主题确认本地有Node.js环境，我的版本是v22.17.0，minimalism主题官方文档要求node版本在大于v18
+1node -v
+
+本地全局安装hexo-cli命令行工具
+1npm install -g h
+            
+          </div>
+      </a>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-12</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+
+                Hexo
+                
+                  ，
+                
+            
+
+                minimalism
+                
+            
+          </span>
+        
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+  </div>
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = false; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+
+

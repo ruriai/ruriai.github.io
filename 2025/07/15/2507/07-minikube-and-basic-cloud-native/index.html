@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>基本的云原生及使用minikube</title>
+<meta name="keywords" content="基本的云原生及使用minikube, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="什么是云原生？云原生是在云计算环境中构建、部署和管理现代应用程序的软件方法。
+
+什么是云原生？- 云原生架构简介 - AWS
+
+想学习云原生相关的东西，而我们已经掌握如何使用docker，而直接上手kubernets又未免有些难度，此时mi">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="基本的云原生及使用minikube">
+<meta property="og:description" content="什么是云原生？云原生是在云计算环境中构建、部署和管理现代应用程序的软件方法。
+
+什么是云原生？- 云原生架构简介 - AWS
+
+想学习云原生相关的东西，而我们已经掌握如何使用docker，而直接上手kubernets又未免有些难度，此时mi">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">基本的云原生及使用minikube</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-15</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/minikube/">
+              minikube
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Cloud/">
+              Cloud
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>什么是云原生？云原生是在云计算环境中构建、部署和管理现代应用程序的软件方法。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/what-is/cloud-native/">什么是云原生？- 云原生架构简介 - AWS</a></li>
+</ul>
+<p>想学习云原生相关的东西，而我们已经掌握如何使用docker，而直接上手kubernets又未免有些难度，此时minikube是个不错的选项。</p>
+<p>minikube可以在macOS、Linux和Windows上快速设置本地Kubernetes集群。minikube是本地Kubernetes，专注于简化Kubernetes的学习和开发。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://minikube.cn/docs/">欢迎！ | minikube 中文</a></li>
+</ul>
+<p>我的环境是WSL2 Fedora42</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250715211506068.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250715211506068.png"  alt="image.png" lazyload></a></p>
+<h2 id="安装minikube并启动集群"><a href="#安装minikube并启动集群" class="headerlink" title="安装minikube并启动集群"></a>安装minikube并启动集群</h2><p>拉取RPM安装包并安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -Uvh minikube-latest.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p>验证是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">minikube version</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">minikube version: v1.36.0</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">commit: f8f52f5de11fc6ad8244afac475e1d0f96841df1-dirty</span></span><br></pre></td></tr></table></figure>
+
+<p>启动集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start</span><br></pre></td></tr></table></figure>
+
+<p>启动成功</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250715230622678.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250715230622678.png"  alt="image.png" lazyload></a></p>
+<p>用于停止minikube集群的指令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube stop</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装kubectl"><a href="#安装kubectl" class="headerlink" title="安装kubectl"></a>安装kubectl</h2><p><strong>kubectl</strong>是kubernetes的命令行工具，用于与kubernetes集群进行交互。它允许用户管理和操作kubernetes资源，如<strong>Pods</strong>、<strong>Deployments</strong>、<strong>Services</strong>等</p>
+<p>kubectl版本和集群版本之间的差异必须在一个小版本号内。 例如：<code>v1.33</code>版本的客户端能与<code>v1.32</code>、<code>v1.33</code>和<code>v1.34</code>版本的控制面通信。 用最新兼容版的kubectl有助于避免不可预见的问题。</p>
+<p>安装过程依然以我的Fedora系统为例，其他系统参考官方教程</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux/">在 Linux 系统中安装并设置 kubectl | Kubernetes</a></li>
+</ul>
+<p>添加kubernets的yum仓库，以下为<code>v1.33</code>版本，替换版本号即可更换为其他版本</p>
+<p>注意，以下指令这覆盖<code>/etc/yum.repos.d/kubernetes.repo</code>中现存的所有配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt;EOF | sudo tee /etc/yum.repos.d/kubernetes.repo</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://pkgs.k8s.io/core:/stable:/v1.33/rpm/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://pkgs.k8s.io/core:/stable:/v1.33/rpm/repodata/repomd.xml.key</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>要将kubectl升级到别的次要版本，你需要先升级 <code>/etc/yum.repos.d/kubernetes.repo</code> 中的版本，再运行 <code>yum update</code> 命令。详细操作及介绍见：<a target="_blank" rel="noopener" href="https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/kubeadm/change-package-repository/">更改 Kubernetes 软件包仓库 | Kubernetes</a></p>
+<p>使用yum安装kubectl</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y kubectl</span><br></pre></td></tr></table></figure>
+
+<p>获取集群的状态，检验kubectl是否安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl cluster-info</span><br></pre></td></tr></table></figure>
+
+<p>可以看到还在运行中的mikukube集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Kubernetes control plane is running at https://127.0.0.1:32771</span><br><span class="line">CoreDNS is running at https://127.0.0.1:32771/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy</span><br><span class="line"></span><br><span class="line">To further debug and diagnose cluster problems, use &#x27;kubectl cluster-info dump&#x27;.</span><br></pre></td></tr></table></figure>
+
+<p>启用shell的kubernets命令自动补全功能，以<code>zsh</code>为例。在<code>~/.zshrc</code>中添加以下内容，然后刷新<code>zsh</code>即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &lt;(kubectl completion zsh)</span><br></pre></td></tr></table></figure>
+
+<h2 id="云原生"><a href="#云原生" class="headerlink" title="云原生"></a>云原生</h2><p>什么是云原生，包括哪些技术，docker和k8s，k8s是什么，minikube和k8s的关系</p>
+<p>从minikube和Kubectl命令上手，逐渐介绍k8s的概念</p>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E5%AE%89%E8%A3%85minikube%E5%B9%B6%E5%90%AF%E5%8A%A8%E9%9B%86%E7%BE%A4"><span class="top-box-text">安装minikube并启动集群</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E5%AE%89%E8%A3%85kubectl"><span class="top-box-text">安装kubectl</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%BA%91%E5%8E%9F%E7%94%9F"><span class="top-box-text">云原生</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/07/15/2507/08-set-proxy-in-wsl2/">
+          <h3 class="post-title">
+            下一篇：为WSL2设置代理
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+
