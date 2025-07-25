@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>使用minikube学习k8s基础操作</title>
+<meta name="keywords" content="使用minikube学习k8s基础操作, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="启动&#x2F;删除 minikube启动minikube集群
+1minikube start
+
+Fedora下删除minikube
+123456789101112131415# 停止运行minikube stop; # 执行卸载命令min">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="使用minikube学习k8s基础操作">
+<meta property="og:description" content="启动&#x2F;删除 minikube启动minikube集群
+1minikube start
+
+Fedora下删除minikube
+123456789101112131415# 停止运行minikube stop; # 执行卸载命令min">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">使用minikube学习k8s基础操作</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-16</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/minikube/">
+              minikube
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Cloud/">
+              Cloud
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/k8s/">
+              k8s
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h2 id="启动-删除-minikube"><a href="#启动-删除-minikube" class="headerlink" title="启动&#x2F;删除 minikube"></a>启动&#x2F;删除 minikube</h2><p>启动minikube集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start</span><br></pre></td></tr></table></figure>
+
+<p>Fedora下删除minikube</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止运行</span></span><br><span class="line">minikube stop; </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">执行卸载命令</span></span><br><span class="line">minikube delete</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">移除相关配置文件</span></span><br><span class="line">rm -r ~/.kube ~/.minikube</span><br><span class="line">sudo rm /usr/local/bin/localkube /usr/local/bin/minikube</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止服务</span></span><br><span class="line">systemctl stop &#x27;*kubelet*.mount&#x27;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">删除目录</span></span><br><span class="line">sudo rm -rf /etc/kubernetes/</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问面板"><a href="#访问面板" class="headerlink" title="访问面板"></a>访问面板</h2><p>访问minikube集群中运行的k8s面板</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube dashboard</span><br></pre></td></tr></table></figure>
+
+<p>启动成功，默认地址</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1:41351/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/workloads?namespace=default">http://127.0.0.1:41351/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/workloads?namespace=default</a></li>
+</ul>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716095243043.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716095243043.png"  alt="image.png" lazyload></a></p>
+<h2 id="部署、暴露及访问服务"><a href="#部署、暴露及访问服务" class="headerlink" title="部署、暴露及访问服务"></a>部署、暴露及访问服务</h2><p>创建一个名为<code>hello-minikube</code>的部署，使用的镜像是<code>kicbase/echo-server:1.0</code>。部署是Kubernetes中用于管理应用程序的对象，它确保指定数量的Pod（容器实例）在集群中运行，并且可以自动处理Pod的创建、更新和删除。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0</span><br></pre></td></tr></table></figure>
+
+<p>控制台打印<code>deployment.apps/hello-minikube created</code></p>
+<p>将刚刚创建的<code>hello-minikube</code>部署暴露为一个服务，服务类型为<code>NodePort</code>，并将其端口设置为<code>8080</code>。<code>NodePort</code>服务类型允许外部流量通过集群节点的特定端口访问服务。Kubernetes会在每个节点上分配一个端口（通常在30000-32767范围内），并将流量转发到后端的Pod</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl expose deployment hello-minikube --type=NodePort --port=8080</span><br></pre></td></tr></table></figure>
+
+<p>控制台打印<code>service/hello-minikube exposed</code></p>
+<p>在Minikube环境中访问<code>hello-minikube</code>服务。它会自动打开一个浏览器窗口，指向分配给该服务的<code>NodePort</code>地址。通过这个地址，用户可以访问到部署的应用程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube service hello-minikube</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716103446430.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716103446430.png"  alt="image.png" lazyload></a></p>
+<p>浏览器中显示以下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Request served by hello-minikube-ffcbb5874-vqdjj</span><br><span class="line"></span><br><span class="line">HTTP/1.1 GET /</span><br><span class="line"></span><br><span class="line">Host: 127.0.0.1:39899</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Accept-Encoding: gzip, deflate, br, zstd</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Sec-Ch-Ua: &quot;Not)A;Brand&quot;;v=&quot;8&quot;, &quot;Chromium&quot;;v=&quot;138&quot;, &quot;Microsoft Edge&quot;;v=&quot;138&quot;</span><br><span class="line">Sec-Ch-Ua-Mobile: ?0</span><br><span class="line">Sec-Ch-Ua-Platform: &quot;Windows&quot;</span><br><span class="line">Sec-Fetch-Dest: document</span><br><span class="line">Sec-Fetch-Mode: navigate</span><br><span class="line">Sec-Fetch-Site: none</span><br><span class="line">Sec-Fetch-User: ?1</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="新集群"><a href="#新集群" class="headerlink" title="新集群"></a>新集群</h2><p>minikube允许在本地运行多个集群。通过使用不同的<code>profiles</code>（配置文件），这些集群互相独立，并拥有不同的名称、配置和状态</p>
+<p>本地创建名为<code>cluster2</code>的集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start -p cluster2 </span><br></pre></td></tr></table></figure>
+
+<p>列出本地所有minikube集群配置，包括状态、名称、节点等信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube profile list</span><br></pre></td></tr></table></figure>
+
+<p>停止刚创建的<code>cluster2</code>集群</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube stop -p cluster2</span><br></pre></td></tr></table></figure>
+
+<p><code>minikube</code>指令如何不指定集群，则默认对<code>profile minikube</code>集群生效，比如此时有两个集群，使用<code>stop</code>命令，则只关闭<code>profile minikube</code>集群</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716105325734.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716105325734.png"  alt="image.png" lazyload></a></p>
+<h2 id="k8s核心概念"><a href="#k8s核心概念" class="headerlink" title="k8s核心概念"></a>k8s核心概念</h2><h3 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h3><p>Node 是 Kubernetes 集群的<strong>最小硬件单元</strong>，可以是物理服务器或虚拟机（在 Minikube 中，节点通常是一个本地虚拟机）。所有的应用程序最终都会运行在节点上。</p>
+<ul>
+<li><p><strong>作用</strong><br>节点是 Pod 的 “运行载体”，负责运行 Pod 中的容器，并提供计算、网络、存储等资源。</p>
+</li>
+<li><p><strong>组成</strong><br>每个节点会运行 Kubernetes 的核心组件（如容器运行时、kubelet、kube-proxy 等），确保 Pod 能正常启动和运行。</p>
+</li>
+<li><p><strong>案例关联</strong><br>在你的 Minikube 环境中，<code>minikube start</code>会创建一个单节点集群（这个节点就是运行所有 Pod 的虚拟机）；你部署的<code>hello-minikube</code>相关 Pod，最终就运行在这个节点上。</p>
+</li>
+</ul>
+<h3 id="Pod"><a href="#Pod" class="headerlink" title="Pod"></a>Pod</h3><p>Pod 是 Kubernetes 中<strong>最小的可部署单元</strong>，是容器的 “包装器”。一个 Pod 可以包含一个或多个紧密关联的容器（通常是一个主容器 + 辅助容器），这些容器共享网络（同一 Pod 内的容器可通过<code>localhost</code>通信）和存储资源。</p>
+<ul>
+<li><p><strong>特点</strong></p>
+<ul>
+<li>Pod 是临时的（”有生命周期的”）：当容器故障、节点重启或资源不足时，Pod 可能会被销毁并重新创建，其 IP 地址也会随之变化（这是 Pod 的 “动态性”）。</li>
+<li>Pod 直接运行在节点上：一个节点可以运行多个 Pod，但受节点资源（CPU、内存）限制。</li>
+</ul>
+</li>
+<li><p><strong>案例关联</strong><br>你通过<code>kubectl create deployment</code>创建部署时，Deployment 会自动生成 Pod（由<code>kicbase/echo-server:1.0</code>镜像运行的容器就在这些 Pod 中）。浏览器中显示的<code>Request served by hello-minikube-ffcbb5874-vqdjj</code>就是具体的 Pod 名称。</p>
+</li>
+</ul>
+<h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><p>Deployment 是 Kubernetes 中的<strong>控制器</strong>，用于管理 Pod 的生命周期。它不直接运行容器，而是通过定义 “期望状态”（如需要 3 个 Pod），自动确保集群中始终有指定数量的 Pod 在运行。</p>
+<ul>
+<li><p><strong>核心功能</strong></p>
+<ul>
+<li>维持 Pod 数量：如果 Pod 因故障消失，Deployment 会自动创建新的 Pod 补充。</li>
+<li>滚动更新：当需要更新应用（如更换镜像版本）时，Deployment 会逐步替换旧 Pod（先创建新 Pod，再销毁旧 Pod），避免服务中断。</li>
+<li>回滚：如果更新后出现问题，Deployment 支持回滚到之前的稳定版本。</li>
+</ul>
+</li>
+<li><p><strong>与 Pod 的关系</strong><br>Deployment 通过 “标签选择器”（label selector）关联 Pod（给 Pod 打标签，Deployment 通过标签找到要管理的 Pod）。例如，你创建的<code>hello-minikube</code>部署会给它管理的 Pod 打上标签，确保只管理这些 Pod。</p>
+</li>
+<li><p><strong>案例关联</strong><br><code>kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0</code>命令定义了一个 Deployment，其 “期望状态” 是：运行 1 个基于<code>kicbase/echo-server:1.0</code>镜像的 Pod。Kubernetes 会自动创建并维持这个 Pod 的运行。</p>
+</li>
+</ul>
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><p>由于 Pod 是临时的（IP 会变），直接通过 Pod 的 IP 访问应用会非常不稳定。Service 的作用是为一组 Pod 提供<strong>固定的网络访问地址</strong>，无论 Pod 如何重启或迁移，Service 的地址始终不变。</p>
+<ul>
+<li><p><strong>核心功能</strong></p>
+<ul>
+<li>负载均衡：当多个 Pod 提供同一服务时（如 Deployment 管理 3 个 Pod），Service 会将请求均匀分发到这些 Pod。</li>
+<li>固定访问点：Service 会分配一个集群内部的固定 IP（ClusterIP），并通过标签选择器关联 Pod（和 Deployment 类似，通过标签找到目标 Pod）。</li>
+</ul>
+</li>
+<li><p><strong>与 Pod 的关系</strong><br>Service 通过标签选择器绑定到一组 Pod（这些 Pod 通常由 Deployment 管理），形成 “前端 Service + 后端 Pod” 的稳定访问链路。</p>
+</li>
+<li><p><strong>案例关联</strong><br><code>kubectl expose deployment hello-minikube --type=NodePort --port=8080</code>创建了一个 Service，它会绑定到<code>hello-minikube</code>部署管理的 Pod，提供 8080 端口的访问。即使 Pod 重启（IP 变化），Service 也能通过标签找到新的 Pod 并转发请求。</p>
+</li>
+</ul>
+<h3 id="对外暴露"><a href="#对外暴露" class="headerlink" title="对外暴露"></a>对外暴露</h3><p>默认情况下，Service 的 ClusterIP 只能在集群内部访问（如集群内的其他 Pod）。要让外部（集群外的设备，如你的电脑）访问服务，需要通过<strong>Service 的类型</strong>实现 “对外暴露”。常见的对外暴露方式包括<code>NodePort</code>、<code>LoadBalancer</code>（云环境）、<code>Ingress</code>等。</p>
+<ul>
+<li><p><strong>NodePort 类型</strong>：</p>
+<ul>
+<li>原理：Kubernetes 会在集群的每个节点上开放一个端口（默认范围 30000-32767），并将这个端口的流量转发到 Service 的 ClusterIP:Port，最终到达 Pod。</li>
+<li>外部访问路径：<code>节点IP:NodePort</code> → Service → Pod。</li>
+</ul>
+</li>
+<li><p><strong>案例关联</strong>：你创建的<code>NodePort</code>类型 Service，Minikube 会在其节点（本地虚拟机）上分配一个端口（如浏览器中的<code>127.0.0.1:39899</code>，其中 39899 就是 NodePort），外部设备（你的电脑）通过这个端口就能访问到集群内的<code>echo-server</code>服务。</p>
+</li>
+</ul>
+<h2 id="部署应用"><a href="#部署应用" class="headerlink" title="部署应用"></a>部署应用</h2><p>使用镜像创建deployment</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl create deployment hello-minikube1 --image=kicbase/echo-server:1.0</span><br></pre></td></tr></table></figure>
+
+<p>暴露depolyment到指定端口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl expose deployment hello-minikube1 --type=LoadBalancer --port=8080</span><br></pre></td></tr></table></figure>
+
+<h3 id="应用从零到上线minikube"><a href="#应用从零到上线minikube" class="headerlink" title="应用从零到上线minikube"></a>应用从零到上线minikube</h3><p>简单的演示，从零开始编写express web应用，docker打包为镜像再部署到minikube集群上</p>
+<h4 id="构建应用镜像"><a href="#构建应用镜像" class="headerlink" title="构建应用镜像"></a>构建应用镜像</h4><p>先完成一个express前后端不分离的web应用，然后为其编写dockerfile和docker-compose.yml配置文件，这里不展示具体代码，可以看这个公开仓库，里面有简单express web应用的源代码以及配置文件，可以直接<code>git clone</code>下来使用</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/usamikinoko/minikube-test-express-app">GitHub - usamikinoko&#x2F;minikube-test-express-app</a></li>
+</ul>
+<p>构建镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build</span><br></pre></td></tr></table></figure>
+
+<p>minikube有自己的docker环境，所以我们需要将本地镜像导入到minikube</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube image load minikube-test-app:latest</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="在minikube集群中部署本地镜像"><a href="#在minikube集群中部署本地镜像" class="headerlink" title="在minikube集群中部署本地镜像"></a>在minikube集群中部署本地镜像</h4><p>不同于前面用过的<code>命令式管理</code>，这次部署应用我们使用声明式配置管理，也就是<code>kubectl apply</code>指令</p>
+<p><code>kubectl apply</code> 指令的作用是将指定的配置文件里描述的资源状态应用到 Kubernetes 集群中。它会根据配置文件中的内容，在集群中创建或更新相应的资源。如果资源不存在，就创建新资源；如果资源已存在，就更新其状态以符合配置文件中的描述。该命令基于声明式配置管理理念，用户只需描述资源的期望状态，Kubernetes 会自动处理如何达到这个状态，无需像命令式管理（如<code>create</code>命令）那样明确告诉系统要执行什么操作。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/">Deployments | Kubernetes</a></li>
+</ul>
+<p>创建用于部署<code>test-app</code>应用的配置文件，保存为<code>test-app-deployment.yaml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">test-app</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">matchLabels:</span></span><br><span class="line">      <span class="attr">app:</span> <span class="string">test-app</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">metadata:</span></span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">app:</span> <span class="string">test-app</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">test-app</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">minikube-test-app:latest</span></span><br><span class="line">        <span class="attr">imagePullPolicy:</span> <span class="string">Never</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">containerPort:</span> <span class="number">4040</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>部署应用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f test-app-deployment.yaml</span><br></pre></td></tr></table></figure>
+
+<p>暴露应用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl expose deployment test-app --port=4040 --target-port=4040 --type=NodePort</span><br></pre></td></tr></table></figure>
+
+<p>浏览器中访问应用，相当成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube service test-app</span><br></pre></td></tr></table></figure>
+
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716143038907.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716143038907.png"  alt="image.png" lazyload></a></p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716142642030.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716142642030.png"  alt="image.png" lazyload></a></p>
+<h4 id="补充1-切换minikube的docker环境"><a href="#补充1-切换minikube的docker环境" class="headerlink" title="补充1 - 切换minikube的docker环境"></a>补充1 - 切换minikube的docker环境</h4><p><code>minikube docker-env</code>输出提供了有关如何配置你的 shell 以使用 Minikube 的 Docker 守护进程的信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">minikube docker-env</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> DOCKER_TLS_VERIFY=<span class="string">&quot;1&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> DOCKER_HOST=<span class="string">&quot;tcp://127.0.0.1:65525&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> DOCKER_CERT_PATH=<span class="string">&quot;/home/kinoko/.minikube/certs&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">export</span> MINIKUBE_ACTIVE_DOCKERD=<span class="string">&quot;minikube&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="comment"># To point your shell to minikube&#x27;s docker-daemon, run:</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="comment"># eval $(minikube -p minikube docker-env)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>所以，我们只需要执行这句命令即可进入minikube的docker环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval $(minikube -p minikube docker-env)</span><br></pre></td></tr></table></figure>
+
+<p>退出minikube的docker环境可以使用这句</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval $(minikube -p minikube docker-env -u)</span><br></pre></td></tr></table></figure>
+
+<p>输出环境变量检测shell是否在minikube docker环境中</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $DOCKER_HOST</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">tcp://127.0.0.1:65525</span></span><br></pre></td></tr></table></figure>
+
+<p>进入minikube的docker环境后，构建应用镜像，这样的话镜像就直接构建在minikube的docker环境中，不需要手动<code>load</code>宿主机镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build </span><br></pre></td></tr></table></figure>
+
+<p>查看现有镜像，你会发现其中已经有很多k8s相关的镜像，这也证明终端确实已经切换到了minikube的docker环境</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716135129960.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250716135129960.png"  alt="image.png" lazyload></a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images -a</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">REPOSITORY                                      TAG        IMAGE ID       CREATED         SIZE</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">minikube-test-app                               latest     5ba493ef2796   4 seconds ago   169MB</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">...</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="补充2-镜像拉取策略（imagePullPolicy）"><a href="#补充2-镜像拉取策略（imagePullPolicy）" class="headerlink" title="补充2 - 镜像拉取策略（imagePullPolicy）"></a>补充2 - 镜像拉取策略（imagePullPolicy）</h4><p>Kubernetes 的<code>imagePullPolicy</code>（镜像拉取策略）默认值为：</p>
+<ul>
+<li>若镜像标签为<code>latest</code>，默认策略是<code>Always</code>（总是尝试从远程仓库拉取，即使本地有镜像）。</li>
+<li>若镜像标签为非<code>latest</code>（如<code>v1</code>），默认策略是<code>IfNotPresent</code>（本地有则使用本地，否则拉取远程）。</li>
+</ul>
+<p>也就是说，如果你在minikube docker中构建了镜像，但是在create时直接指定本地镜像名称</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">以下两条命令效果一致，不指定标签也是默认:latest</span></span><br><span class="line">kubectl create deployment test-app --image=minikube-test-app:latest</span><br><span class="line">kubectl create deployment test-app --image=minikube-test-app</span><br></pre></td></tr></table></figure>
+
+<p>这也会导致部署服务失败，因为此时monikube会遵循镜像拉取策略拉取远程镜像，而远程镜像仓库显然没有我们的镜像，所以会部署服务失败。</p>
+<p>所以最好还是使用声明式配置管理，也就是创建<code>.yaml</code>文件并使用<code>apply</code>指令。</p>
+<h2 id="kubectl常用命令"><a href="#kubectl常用命令" class="headerlink" title="kubectl常用命令"></a>kubectl常用命令</h2><h3 id="查看资源"><a href="#查看资源" class="headerlink" title="查看资源"></a>查看资源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 Node</span></span><br><span class="line">kubectl get nodes</span><br><span class="line">kubectl describe node &lt;node-name&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 Deployment</span></span><br><span class="line">kubectl get deployments</span><br><span class="line">kubectl get deployments -o wide  # 显示详细信息</span><br><span class="line">kubectl describe deployment &lt;deployment-name&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 Pod</span></span><br><span class="line">kubectl get pods</span><br><span class="line">kubectl get pods -o wide</span><br><span class="line">kubectl describe pod &lt;pod-name&gt;</span><br><span class="line">kubectl get pods -n &lt;namespace&gt;  # 指定命名空间</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看 Service</span></span><br><span class="line">kubectl get services</span><br><span class="line">kubectl describe service &lt;service-name&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建-增加资源"><a href="#创建-增加资源" class="headerlink" title="创建&#x2F;增加资源"></a>创建&#x2F;增加资源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建 Deployment（基于 YAML 文件）</span></span><br><span class="line">kubectl apply -f deployment.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接创建 Deployment（命令行）</span></span><br><span class="line">kubectl create deployment &lt;deployment-name&gt; --image=&lt;image-name&gt;</span><br><span class="line">kubectl scale deployment &lt;deployment-name&gt; --replicas=3  <span class="comment"># 设置副本数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 Service（基于 YAML 文件）</span></span><br><span class="line">kubectl apply -f service.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 Node（通常通过 kubeadm 等工具完成，而非直接用 kubectl）</span></span><br><span class="line"><span class="comment"># 1. 在新节点执行加入命令</span></span><br><span class="line">kubeadm <span class="built_in">join</span> &lt;control-plane-host&gt;:&lt;port&gt; --token &lt;token&gt; --discovery-token-ca-cert-hash &lt;<span class="built_in">hash</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除资源"><a href="#删除资源" class="headerlink" title="删除资源"></a>删除资源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除 Node（需先驱逐 Pod）</span></span><br><span class="line">kubectl drain &lt;node-name&gt; --ignore-daemonsets</span><br><span class="line">kubectl delete node &lt;node-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 Deployment</span></span><br><span class="line">kubectl delete deployment &lt;deployment-name&gt;</span><br><span class="line">kubectl delete -f deployment.yaml  <span class="comment"># 基于 YAML 文件删除</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 Pod</span></span><br><span class="line">kubectl delete pod &lt;pod-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 Service</span></span><br><span class="line">kubectl delete service &lt;service-name&gt;</span><br><span class="line">kubectl delete -f service.yaml</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他管理操作"><a href="#其他管理操作" class="headerlink" title="其他管理操作"></a>其他管理操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新 Deployment（滚动更新）</span></span><br><span class="line">kubectl <span class="built_in">set</span> image deployment/&lt;deployment-name&gt; &lt;container-name&gt;=&lt;new-image&gt;</span><br><span class="line">kubectl rollout status deployment/&lt;deployment-name&gt;</span><br><span class="line">kubectl rollout <span class="built_in">history</span> deployment/&lt;deployment-name&gt;</span><br><span class="line">kubectl rollout undo deployment/&lt;deployment-name&gt;  <span class="comment"># 回滚</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启 Pod</span></span><br><span class="line">kubectl rollout restart deployment/&lt;deployment-name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 Pod 日志</span></span><br><span class="line">kubectl logs &lt;pod-name&gt;</span><br><span class="line">kubectl logs -f &lt;pod-name&gt;  <span class="comment"># 实时跟踪日志</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入 Pod 内部</span></span><br><span class="line">kubectl <span class="built_in">exec</span> -it &lt;pod-name&gt; -- /bin/sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 端口转发（访问集群内服务）</span></span><br><span class="line">kubectl port-forward service/&lt;service-name&gt; 8080:80</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签管理</span></span><br><span class="line">kubectl label nodes &lt;node-name&gt; &lt;label-key&gt;=&lt;label-value&gt;</span><br><span class="line">kubectl label pods &lt;pod-name&gt; &lt;label-key&gt;=&lt;label-value&gt; --overwrite</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用选项"><a href="#常用选项" class="headerlink" title="常用选项"></a>常用选项</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-n &lt;namespace&gt;        <span class="comment"># 指定命名空间</span></span><br><span class="line">-o wide               <span class="comment"># 显示详细信息</span></span><br><span class="line">-o yaml               <span class="comment"># 输出 YAML 格式</span></span><br><span class="line">--watch               <span class="comment"># 实时监控资源变化</span></span><br><span class="line">--dry-run=client      <span class="comment"># 预览操作，不实际执行</span></span><br><span class="line">--all-namespaces      <span class="comment"># 所有命名空间</span></span><br></pre></td></tr></table></figure>
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E5%90%AF%E5%8A%A8-%E5%88%A0%E9%99%A4-minikube"><span class="top-box-text">启动&#x2F;删除 minikube</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E8%AE%BF%E9%97%AE%E9%9D%A2%E6%9D%BF"><span class="top-box-text">访问面板</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%83%A8%E7%BD%B2%E3%80%81%E6%9A%B4%E9%9C%B2%E5%8F%8A%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1"><span class="top-box-text">部署、暴露及访问服务</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E6%96%B0%E9%9B%86%E7%BE%A4"><span class="top-box-text">新集群</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#k8s%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="top-box-text">k8s核心概念</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#Node"><span class="top-box-text">Node</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#Pod"><span class="top-box-text">Pod</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#Deployment"><span class="top-box-text">Deployment</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#Service"><span class="top-box-text">Service</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%AF%B9%E5%A4%96%E6%9A%B4%E9%9C%B2"><span class="top-box-text">对外暴露</span></a></li></ol></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8"><span class="top-box-text">部署应用</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%BA%94%E7%94%A8%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%8A%E7%BA%BFminikube"><span class="top-box-text">应用从零到上线minikube</span></a></li></ol></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#kubectl%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="top-box-text">kubectl常用命令</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E6%9F%A5%E7%9C%8B%E8%B5%84%E6%BA%90"><span class="top-box-text">查看资源</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%88%9B%E5%BB%BA-%E5%A2%9E%E5%8A%A0%E8%B5%84%E6%BA%90"><span class="top-box-text">创建&#x2F;增加资源</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%88%A0%E9%99%A4%E8%B5%84%E6%BA%90"><span class="top-box-text">删除资源</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%85%B6%E4%BB%96%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C"><span class="top-box-text">其他管理操作</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9"><span class="top-box-text">常用选项</span></a></li></ol></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/07/15/2507/08-set-proxy-in-wsl2/">
+          <h3 class="post-title">
+            下一篇：为WSL2设置代理
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+

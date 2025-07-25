@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+<meta charset="utf-8" >
+
+<title>为腾讯云主机配置https域名</title>
+<meta name="keywords" content="为腾讯云主机配置https域名, ruriai, kinoko, quicknote, blog">
+<meta name="description" content="部署前端项目到 Vercel，生产环境的 VITE_BASE_API 我直接设置的云服务器 IP 地址，结果发现请求报错，F12 查看控制台发现提示不允许未使用 HTTPS 的 API
+
+Vercel: Build and deploy t">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="为腾讯云主机配置https域名">
+<meta property="og:description" content="部署前端项目到 Vercel，生产环境的 VITE_BASE_API 我直接设置的云服务器 IP 地址，结果发现请求报错，F12 查看控制台发现提示不允许未使用 HTTPS 的 API
+
+Vercel: Build and deploy t">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ruriai.kinoko.fun">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ruriai.kinoko.fun">
+        <h1 class="site-title">ruriai</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">为腾讯云主机配置https域名</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-07-24</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Domain/">
+              Domain
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Cloud/">
+              Cloud
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/Network/">
+              Network
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>部署前端项目到 Vercel，生产环境的 <code>VITE_BASE_API</code> 我直接设置的云服务器 IP 地址，结果发现请求报错，F12 查看控制台发现提示不允许未使用 HTTPS 的 API</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://vercel.com/">Vercel: Build and deploy the best web experiences with the AI Cloud</a></li>
+</ul>
+<p>已知 App Backend 使用 docker 部署在腾讯云服务器上，常用域名托管在 Cloudflare，那我就需要为云服务器设置一个域名，<code>api.kinoko.fun</code>，然后为其配置 SSL 证书</p>
+<h2 id="Cloudflare"><a href="#Cloudflare" class="headerlink" title="Cloudflare"></a>Cloudflare</h2><p>也没什么好说的，先将域名解析到云服务器 IP</p>
+<p><a class="simple-lightbox" target="_blank" rel="noopener" href="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250724100857268.png"><img   src="/images/loading.svg" data-src="https://kinoko-images-bed-1315415177.cos.ap-shanghai.myqcloud.com/image2507/20250724100857268.png"  alt="image.png" lazyload></a></p>
+<h2 id="云服务器配置"><a href="#云服务器配置" class="headerlink" title="云服务器配置"></a>云服务器配置</h2><p>云服务器使用的是 Rocky Linux 系统</p>
+<p>先安装 Nginx，并启动服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> dnf install nginx</span><br><span class="line"><span class="built_in">sudo</span> systemctl start nginx</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> nginx</span><br></pre></td></tr></table></figure>
+
+<p>添加 server 配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/nginx/conf.d/api.kinoko.fun.conf</span><br></pre></td></tr></table></figure>
+
+<p>具体配置项自己修改，这里只是个模板，其中 <code>YOUR_DOMAIN</code> 就是你需要配置的域名，<code>PORT</code>是容器暴露的端口</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> YOUR_DOMAIN;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:PORT;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>验证配置是否正确</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nginx -t</span><br></pre></td></tr></table></figure>
+
+<p>若没有问题，重启 nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl restart nginx</span><br></pre></td></tr></table></figure>
+
+<p>然后我们需要配置 HTTPS，按照以下步骤安装 Certbot 并配置 SSL 证书</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7205839782381928508">使用Certbot申请免费 HTTPS 证书及自动续期还没有用上 HTTPS 证书？快来申请一个吧。今天教你申请免费的 - 掘金</a></li>
+</ul>
+<p>安装 Cerbot</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install certbot python3-certbot-nginx</span><br></pre></td></tr></table></figure>
+
+<p>获取 SSL 证书并自动配置 Nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> certbot --nginx -d api.kinoko.fun</span><br></pre></td></tr></table></figure>
+
+<p>此时回顾 <code>/etc/nginx/conf.d/api.kinoko.fun.conf</code> 文件，你会发现其内容已经发生变化（已经自动配置了 SSL）</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">server_name</span> api.kinoko.fun;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:4060;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl; <span class="comment"># managed by Certbot</span></span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/letsencrypt/live/api.kinoko.fun/fullchain.pem; <span class="comment"># managed by Certbot</span></span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/letsencrypt/live/api.kinoko.fun/privkey.pem; <span class="comment"># managed by Certbot</span></span><br><span class="line">    <span class="attribute">include</span> /etc/letsencrypt/options-ssl-nginx.conf; <span class="comment"># managed by Certbot</span></span><br><span class="line">    <span class="attribute">ssl_dhparam</span> /etc/letsencrypt/ssl-dhparams.pem; <span class="comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$host</span> = api.kinoko.fun) &#123;</span><br><span class="line">        <span class="attribute">return</span> <span class="number">301</span> https://<span class="variable">$host</span><span class="variable">$request_uri</span>;</span><br><span class="line">    &#125; <span class="comment"># managed by Certbot</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> api.kinoko.fun;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">404</span>; <span class="comment"># managed by Certbot</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完成之后访问自己部署的服务即可，记得在腾讯云服务器控制台中开放对应端口 :D</p>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#Cloudflare"><span class="top-box-text">Cloudflare</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="top-box-text">云服务器配置</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/07/16/2507/09-learn-k8s-via-minikube/">
+          <h3 class="post-title">
+            下一篇：使用minikube学习k8s基础操作
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/ruriai" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+        <a aria-label="跳转至twitter" href="https://x.com/ruriai2233" target="_blank">
+          <i class="icon icon-twitter"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a aria-label="跳转至email" href="kzsoso@163.com" target="_blank">
+          <i class="icon icon-email"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+
